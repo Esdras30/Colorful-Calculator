@@ -1,0 +1,308 @@
+/* Estilos Generales */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+}
+
+body, html {
+  height: 100vh;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+}
+
+.calculator {
+  background: transparent;
+  padding: 10px;
+  box-shadow: inset 0px 0px -10px -3px transparent;
+  border-radius: 10px;
+}
+
+.calculator form input {
+  border: 0;
+  outline: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  font-family: Nunito;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.calculator form input.NumpadBtns {
+  background: transparent;
+}
+
+form .display {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+}
+
+form .display input {
+  text-align: right;
+  flex: 2;
+  font-size: 45px;
+  box-shadow: none;
+  padding: 20px;
+  box-sizing: border-box;
+  background: transparent;
+  box-shadow: 0 0 10px 3px #00000033;
+  height: 80px;
+  color: white;
+}
+
+form input.equal {
+  width: 145px;
+  background: #248277;
+}
+
+form input.ac,
+form input.del {
+  background: #791f1f;
+}
+
+.symbols {
+  background-color: #f4bd64;
+}
+
+.special {
+  background: #248277;
+}
+
+.calculator form input {
+  box-shadow: 0 0 5px 3px #00000025;
+}
+
+.outer {
+ margin: 0 5px;
+  background: #111;
+}
+
+.button {
+  height: 70px;
+  width: 220px;
+  border-radius: 50px;
+}
+
+.outer button,
+.outer span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outer button {
+  background: #111;
+  color: #f2f2f2;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  z-index: 9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button button {
+  height: 60px;
+  width: 210px;
+  border-radius: 50px;
+}
+
+.outer span {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+}
+
+.button span {
+  border-radius: 50px;
+}
+
+.circle span {
+  border-radius: 50%;
+}
+
+.outer span:nth-child(1) {
+  filter: blur(10px);
+}
+
+.outer span:nth-child(2) {
+  filter: blur(16px);
+}
+
+.outer {
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 640px) {
+  body{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .calculator {
+    width: 21rem;
+    height: 28rem;
+    font-size: 16px;
+    
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 93%; 
+  }
+ 
+
+  .calculator form input {
+    width: 60px; /* Ajusta el ancho de los botones de entrada */
+    height: 56px; /* Ajusta la altura de los botones de entrada */
+    font-size: 22px; /* Ajusta el tamaño del texto para botones de entrada */
+    margin: 5px; /* Reduce el espacio entre los botones */
+  }
+
+  form .display input {
+    font-size: 35px; /* Ajusta el tamaño del texto en la pantalla */
+  }
+
+  form input.equal {
+    width: 115px; /* Ajusta el ancho del botón igual (=) */
+  }
+
+  form input.ac,
+  form input.del {
+    background: #630808; /* Cambia el fondo de los botones AC y DEL */
+  }
+
+  .outer button  {
+    font-size: 8.1px;
+  }
+
+  .outer .botonOne {
+    width: 150px;
+    height: 50px;
+    border-radius: 50px;
+    font-size:11px;
+  }
+
+  .center .buttonOne{
+    width: 155px;
+    height: 55px;
+    border-radius: 50px;    
+  }
+
+  .button  {
+    height: 95px; /* Ajusta la altura de los botones grandes */
+    width: 95px; /* Ajusta el ancho de los botones grandes */
+    border-radius: 50%;
+  }
+
+  .button button {
+    height:90px; /* Ajusta la altura de los botones grandes */
+    width:90px; /* Ajusta el ancho de los botones grandes */
+  }
+}
+
+
+/* Estilos para tabletas */
+@media (min-width: 641px) and (max-width: 1024px) {
+  Agrega los estilos específicos para tabletas aquí
+  .calculator {
+    /* Ajusta los estilos para tabletas */
+    width: 80%; /* Ajusta el ancho del contenedor de la calculadora */
+    margin: 0 auto; /* Centra la calculadora en la pantalla */
+    padding: 20px; /* Agrega un poco de espacio alrededor de la calculadora */
+  }
+
+  .calculator form input {
+    width: 50px; /* Ajusta el ancho de los botones de entrada */
+    height: 50px; /* Ajusta la altura de los botones de entrada */
+    font-size: 1.2em; /* Ajusta el tamaño del texto para botones de entrada */
+    margin: 10px; /* Espaciado entre los botones */
+  }
+  
+
+  form .display input {
+    font-size: 40px; /* Ajusta el tamaño del texto en la pantalla */
+    padding: 15px; /* Espaciado en la pantalla */
+  }
+
+  form input.equal {
+    width: 120px; /* Ajusta el ancho del botón igual (=) */
+  }
+
+  form input.ac,
+  form input.del {
+    background: #791f1f; /* Cambia el fondo de los botones AC y DEL */
+  }
+
+  .button {
+    height: 60px; /* Ajusta la altura de los botones grandes */
+    width: 180px; /* Ajusta el ancho de los botones grandes */
+  }
+
+  .button button {
+    height: 50px; /* Ajusta la altura de los botones internos */
+    width: 170px; /* Ajusta el ancho de los botones internos */
+  }
+  
+}
+
+/* 
+Media Queries */
+/* @media screen and (max-width: 768px) {
+  .center {
+      width: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 90%;
+      right: 7rem;
+  }
+
+  .outer .boton {
+      font-size: 8px;
+  }
+
+  .button {
+      height: 90px;
+      width: 90px;
+      border-radius: 50%;
+  }
+
+  .button button {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+  }
+} */

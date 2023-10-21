@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Color Aleatorio</title>
+</head>
+
+<body>
+  <div class="container calculator-container">
+    <div id="colorContainer" class="calculator">
+      <form>
+        <div class="display">
+          <input type="text" name="display" disabled>
+        </div>
+        <div>
+          <input type="button" value="AC" onclick="display.value =''" class="ac">
+          <input type="button" class="del" value="Del" onclick="display.value =display.value.toString().slice (0,-1)">
+          <input type="button" class="symbols" value="." onclick="display.value +='.'">
+          <input type="button" class="symbols" value="/" onclick="display.value +='/'">
+        </div>
+        <div>
+          <input type="button" class="NumpadBtns" value="7" onclick="display.value +='7'">
+          <input type="button" class="NumpadBtns" value="8" onclick="display.value +='8'">
+          <input type="button" class="NumpadBtns" value="9" onclick="display.value +='9'">
+          <input type="button" class="symbols" value="*" onclick="display.value +='*'">
+        </div>
+        <div>
+          <input type="button" class="NumpadBtns" value="4" onclick="display.value +='4'">
+          <input type="button" class="NumpadBtns" value="5" onclick="display.value +='5'">
+          <input type="button" class="NumpadBtns" value="6" onclick="display.value +='6'">
+          <input type="button" class="symbols" value="-" onclick="display.value +='-'">
+        </div>
+        <div>
+          <input type="button" class="NumpadBtns" value="1" onclick="display.value +='1'">
+          <input type="button" class="NumpadBtns" value="2" onclick="display.value +='2'">
+          <input type="button" class="NumpadBtns" value="3" onclick="display.value +='3'">
+          <input type="button" class="symbols" value="+" onclick="display.value +='+'">
+        </div>
+        <div>
+          <input type="button" class="special" value="00" onclick="display.value +='00'">
+          <input type="button" class="special" value="0" onclick="display.value += '0'">
+          <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="outer button">
+      <button id="colorButtonCalculator" class="boton">Calcu- <br> lator <br> Color</button>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <div class="outer buttonOne ">
+      <button id="detenerColorButton" class="botonOne">Stop / <br> Resume</button>    
+    </div>
+
+    <div class="outer button">
+      <button id="ColorButtonBackground" class="boton">Back- <br> gorund <br> Color</button>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Guarda la posición de desplazamiento al hacer clic en un enlace
+      document.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          var href = this.getAttribute('href');
+          history.pushState({ page: href, scrollTop: window.scrollY }, '', href);
+        });
+      });
+
+      // Restaura la posición de desplazamiento al cambiar la URL
+      window.addEventListener('popstate', function (event) {
+        if (event.state && event.state.scrollTop) {
+          window.scrollTo(0, event.state.scrollTop);
+        }
+      });
+
+
+      const colorContainer = document.getElementById('colorContainer');
+      const detenerColorButton = document.getElementById('detenerColorButton');
+      const colorButtonCalculator = document.getElementById('colorButtonCalculator');
+      const ColorButtonBackground = document.getElementById('ColorButtonBackground');
+
+      let colorInterval;
+      let bodyColorInterval;
+      let isColorGenerationPaused = true;
+
+      // Function to generate a random color
+      function generarColorHexAleatorio() {
+        const digitos = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+          const indiceAleatorio = Math.floor(Math.random() * digitos.length);
+          color += digitos[indiceAleatorio];
+        }
+        return color;
+      }
+
+      // Function to change the color of the container
+      function cambiarColorAutomaticamente() {
+        const colorAleatorio = generarColorHexAleatorio();
+        colorContainer.style.backgroundColor = colorAleatorio;
+      }
+
+      // Function to change the body background color
+      function cambiarBodyColorAutomaticamente() {
+        const colorAleatorio = generarColorHexAleatorio();
+        document.body.style.backgroundColor = colorAleatorio;
+      }
+
+      // Start the color generation intervals
+      function startColorGeneration() {
+        colorInterval = setInterval(cambiarColorAutomaticamente, 300);
+        bodyColorInterval = setInterval(cambiarBodyColorAutomaticamente, 300);
+      }
+      startColorGeneration()
+
+      // Stop the color generation
+      function stopColorGeneration() {
+        clearInterval(colorInterval);
+        clearInterval(bodyColorInterval);
+      }
+
+      // Event listener for the "Stop/Resume" button
+      detenerColorButton.addEventListener('click', () => {
+        if (isColorGenerationPaused) {
+          stopColorGeneration();
+        } else {
+
+          startColorGeneration();
+        }
+        isColorGenerationPaused = !isColorGenerationPaused;
+      });
+
+      // Event listener for the "Calculator Color" button
+      colorButtonCalculator.addEventListener('click', () => {
+        stopColorGeneration();
+        cambiarColorAutomaticamente();
+      });
+
+      // Event listener for the "Background Color" button
+      ColorButtonBackground.addEventListener('click', () => {
+        stopColorGeneration();
+        cambiarBodyColorAutomaticamente();
+      });
+    })
+  </script>
+
+</body>
+
+</html>
