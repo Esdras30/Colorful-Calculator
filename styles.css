@@ -161,40 +161,37 @@ form input.del {
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 640px) {
-  body{
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  body {
+    height: auto; /* Quita la altura fija para permitir el desplazamiento vertical */
   }
+  
   .calculator {
-    width: 21rem;
-    height: 28rem;
-    font-size: 16px;
-    
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
+    font-size: 16px; /* Tamaño de fuente más pequeño para dispositivos móviles */
   }
   .center {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 93%; 
+    top: 95%; 
   }
  
 
   .calculator form input {
-    width: 60px; /* Ajusta el ancho de los botones de entrada */
-    height: 56px; /* Ajusta la altura de los botones de entrada */
+    width: 62px; /* Ajusta el ancho de los botones de entrada */
+    height: 64px; /* Ajusta la altura de los botones de entrada */
     font-size: 22px; /* Ajusta el tamaño del texto para botones de entrada */
     margin: 5px; /* Reduce el espacio entre los botones */
   }
 
   form .display input {
-    font-size: 35px; /* Ajusta el tamaño del texto en la pantalla */
+    font-size: 40px; /* Ajusta el tamaño del texto en la pantalla */
   }
 
   form input.equal {
-    width: 115px; /* Ajusta el ancho del botón igual (=) */
+    width: 117px; /* Ajusta el ancho del botón igual (=) */
   }
 
   form input.ac,
